@@ -301,7 +301,7 @@
       <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="contact">
         <div class="w-100">
           <h2 class="mb-5">Contact me</h2>
-          <form name="contact" method="POST" data-netlify="true">
+          <form name="contact" data-netlify-recaptcha="true" method="POST" data-netlify="true">
             <div class="form-group">
               <label for="name">Your Name:</label>
               <input type="text" class="form-control" id="name" name="name"/></label>
@@ -317,7 +317,7 @@
               <label for="message">Your Message:</label>
               <textarea class="form-control" id="message" rows="3" name="message"></textarea>
             </div>
-            
+             <div data-netlify-recaptcha="true"></div>
             <p>
               <button type="submit" class="btn btn-primary">Submit</button>
             </p>
