@@ -1,6 +1,6 @@
 /* sweetScroll load */
-document.addEventListener("DOMContentLoaded", function () {
-  new SweetScroll({/* some options */});
+/* document.addEventListener("DOMContentLoaded", function () {
+  new SweetScroll({});
   particlesJS('particles', {
     "particles": {
       "number": {
@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "retina_detect": true
   });
 }, false);
-
+ */
 (function($) {
   "use strict"; // Start of use strict
 
