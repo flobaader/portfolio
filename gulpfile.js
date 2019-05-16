@@ -4,25 +4,24 @@
 const autoprefixer = require("gulp-autoprefixer");
 const browsersync = require("browser-sync").create();
 const cleanCSS = require("gulp-clean-css");
+const flatten = require("gulp-flatten");
 const del = require("del");
 const gulp = require("gulp");
 const header = require("gulp-header");
 const merge = require("merge-stream");
+const htmlmin = require("gulp-htmlmin");
+const removeHtmlComments = require("gulp-remove-html-comments");
 const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
-
-// Load package.json for banner
-const pkg = require('./package.json');
-
-const banner = "";
+const nunjucks = require("gulp-nunjucks");
 
 // BrowserSync
 function browserSync(done) {
   browsersync.init({
     server: {
-      baseDir: "./"
+      baseDir: "dist"
     },
     port: 3000
   });
@@ -35,10 +34,6 @@ function browserSyncReload(done) {
   done();
 }
 
-// Clean vendor
-function clean() {
-  return del(["./vendor/"]);
-}
 
 // CSS task
 function css() {
@@ -54,15 +49,12 @@ function css() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
     .pipe(gulp.dest("./css"))
     .pipe(rename({
       suffix: ".min"
     }))
     .pipe(cleanCSS())
-    .pipe(gulp.dest("./css"))
+    .pipe(gulp.dest("dist/css"))
     .pipe(browsersync.stream());
 }
 
@@ -71,34 +63,48 @@ function js() {
   return gulp
     .src([
       './js/*.js',
-      '!./js/*.min.js'
     ])
     .pipe(uglify())
-    .pipe(header(banner, {
-      pkg: pkg
-    }))
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./js'))
+    .pipe(gulp.dest('./dist/js'))
     .pipe(browsersync.stream());
 }
+
+function img() {
+  return gulp
+    .src(["./img/*"])
+    .pipe(gulp.dest("./dist/img"))
+    .pipe(browsersync.stream());
+}
+
+//Minify html
+function html () {
+    return gulp.src('html/**/*.html', {base: 'html/'})
+        .pipe(nunjucks.compile())
+        .pipe(plumber())    
+        .pipe(removeHtmlComments())
+        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(flatten())
+        .pipe(gulp.dest("./dist"))
+}
+
 
 // Watch files
 function watchFiles() {
   gulp.watch("./scss/**/*", css);
   gulp.watch("./js/**/*", js);
-  gulp.watch("./**/*.html", browserSyncReload);
+  gulp.watch("./html/**/*", build);
 }
 
 // Define complex tasks
-const build = gulp.series(gulp.parallel(css, js));
+const build = gulp.series(gulp.parallel(css, js, html, img));
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
 // Export tasks
 exports.css = css;
 exports.js = js;
-exports.clean = clean;
 exports.build = build;
 exports.watch = watch;
 exports.default = build;
