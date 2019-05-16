@@ -10,12 +10,12 @@
 
     <title>Florian Baader | Software Engineer</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY=" crossorigin="anonymous"/>
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css" integrity="sha256-H9ochMml3Lh6FE/KKTUFfw2hD7mxc9c8pXoqfIso5Zk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css" integrity="sha256-H9ochMml3Lh6FE/KKTUFfw2hD7mxc9c8pXoqfIso5Zk=" crossorigin="anonymous"/>
 
     <!-- Custom styles for this template -->
     <link href="css/resume.min.css" rel="stylesheet">
@@ -53,6 +53,10 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">Contact me</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -64,8 +68,7 @@
           <h1 class="mb-0">Florian
             <span class="text-primary">Baader</span>
           </h1>
-          <div class="subheading mb-5">Software Engineer | CEO & Lead Developer of SelectCode |
-            <a href="mailto:flo@baader.dev">flo@baader.dev</a>
+          <div class="subheading mb-5">Software Engineer | CEO & Lead Developer of SelectCode
           </div>
           <p class="lead mb-5">I am a passionate programmer who likes to implement applications with new methods and tools. I learn every day and try to constantly improve.
           </p>
@@ -292,6 +295,33 @@
             </li>
 
           </ul>
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="contact">
+        <div class="w-100">
+          <h2 class="mb-5">Contact me</h2>
+          <form name="contact" method="POST" data-netlify="true">
+            <div class="form-group">
+              <label for="name">Your Name:</label>
+              <input type="text" class="form-control" id="name" name="name"/></label>
+            </div>
+
+
+            <div class="form-group">
+              <label for="email">Your Email:</label>
+              <input type="email" class="form-control" id="email" name="email"/></label>
+            </div>
+
+             <div class="form-group">
+              <label for="message">Your Message:</label>
+              <textarea class="form-control" id="message" rows="3" name="message"></textarea>
+            </div>
+            
+            <p>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </p>
+          </form>
         </div>
       </section>
 
