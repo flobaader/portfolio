@@ -79,6 +79,13 @@ function img() {
     .pipe(browsersync.stream());
 }
 
+function favicon() {
+  return gulp
+    .src(["./img/favicon/*"])
+    .pipe(gulp.dest("./dist/"))
+    .pipe(browsersync.stream());
+}
+
 //Minify html
 function html () {
     return gulp.src('html/**/*.html', {base: 'html/'})
@@ -105,7 +112,7 @@ function watchFiles() {
 }
 
 // Define complex tasks
-const build = gulp.series(gulp.parallel(css, js, html, img, redirects));
+const build = gulp.series(gulp.parallel(css, js, html, img, redirects, favicon));
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
 // Export tasks

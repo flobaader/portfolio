@@ -7,16 +7,10 @@ body {
 }
 
 
-
-
 @media (min-width: 992px) {
     body {
         padding-top: 0;
         padding-left: $sidebar-base-width;
-    }
-    .img-profile-header{
-      display: none;
-      visibility: collapse;
     }
 }
 
@@ -92,9 +86,8 @@ p.lead {
 }
 
 
-.img-profile-header {
-  visibility: visible;
-  max-width: 10rem;
-  max-height: 10rem;
-  border: 0.5rem solid fade-out($white, 0.8);
+.img-profile {
+  max-width: 20rem;
+  max-height: 20rem;
+  border: 0.5rem solid fade-out($primary, 0.8);
 }
