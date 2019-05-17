@@ -90,6 +90,12 @@ function html () {
         .pipe(gulp.dest("./dist"))
 }
 
+function redirects(){
+  return gulp
+    .src(["./_redirects"])
+    .pipe(gulp.dest("./dist/"));
+}
+
 
 // Watch files
 function watchFiles() {
@@ -99,7 +105,7 @@ function watchFiles() {
 }
 
 // Define complex tasks
-const build = gulp.series(gulp.parallel(css, js, html, img));
+const build = gulp.series(gulp.parallel(css, js, html, img, redirects));
 const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
 
 // Export tasks
